@@ -1,0 +1,15 @@
+<?php
+
+namespace {{ namespace }};
+
+
+class {{ class }}
+{
+
+    public static function toArray(array $data)
+    {
+        return [
+            //
+        ];
+    }
+}
