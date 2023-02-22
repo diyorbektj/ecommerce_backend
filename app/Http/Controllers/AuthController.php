@@ -22,11 +22,7 @@ class AuthController extends Controller
     {
         $data = UserDTO::toArray($request->validated());
         $user = $this->userRepository->createUser($data);
-        $path = storage_path('app/public/users/avatar/')."$user->login.png";
-        \Avatar::create($request->first_name.' '.$request->last_name)
-            ->setDimension(400, 400)
-            ->setFontSize(200)
-            ->save($path);
+
         $token = $user->createToken('MyApp')->plainTextToken;
 
         return response()->json([
