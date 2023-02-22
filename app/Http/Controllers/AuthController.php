@@ -22,9 +22,6 @@ class AuthController extends Controller
     {
         $data = UserDTO::toArray($request->validated());
         $user = $this->userRepository->createUser($data);
-        if (file_exists(storage_path('app/public/users/avatar/'))) {
-            mkdir(storage_path('app/public/users/avatar/'));
-        }
         $path = storage_path('app/public/users/avatar/')."$user->login.png";
         \Avatar::create($request->first_name.' '.$request->last_name)
             ->setDimension(400, 400)
