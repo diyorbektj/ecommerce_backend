@@ -23,7 +23,7 @@ class ProductResource extends JsonResource
             'quantity' => $this->quantity,
             'status' => $this->status_id,
             'view' => $this->view,
-            'image' => env('APP_URL', 'http://127.0.0.1:8000').$this->image->path ?? null,
+            'image' => env('APP_URL', 'https://api.seb.tj').$this->image->path ?? null,
             'images' => ProductImageResource::collection($this->images),
             'created_at' => $this->created_at,
             'category' => $this->category,
