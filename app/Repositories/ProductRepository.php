@@ -8,7 +8,7 @@ class ProductRepository implements \App\Interfaces\ProductInterface
 {
     public function getProduct($id): \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Builder|array|null
     {
-        $product = Product::query()->find($id);
+        $product = Product::query()->with(['getProductAttribute','image', 'images','category', 'subcategory'])->find($id);
         $product->increment('view');
 
         return $product;
@@ -16,7 +16,7 @@ class ProductRepository implements \App\Interfaces\ProductInterface
 
     public function allProducts(): \Illuminate\Database\Eloquent\Collection|array
     {
-        return Product::query()->orderByDesc('created_at')->with('getProductAttribute')->get();
+        return Product::query()->orderByDesc('created_at')->with(['getProductAttribute','image', 'images','category', 'subcategory'])->get();
     }
 
     public function updateProduct($id, array $data): bool|int
