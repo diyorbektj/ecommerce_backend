@@ -29,7 +29,7 @@ class CreateProductRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:3|max:255',
-            'description' => 'string',
+            'description' => '',
             'images' => 'required',
             'quantity' => 'required|numeric',
             'price' => 'required',
