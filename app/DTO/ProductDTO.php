@@ -8,7 +8,7 @@ class ProductDTO
     {
         return [
             'name' => $data['name'],
-            'description' => $data['description'],
+            'description' => $data['description'] ?? "null",
             'price' => $data['price'],
             'quantity' => $data['quantity'],
             'category_id' => $data['category_id'],
