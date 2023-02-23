@@ -16,7 +16,7 @@ class ProductImageResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'path' => env('APP_URL', 'http://127.0.0.1:8000').$this->path,
+            'path' => env('APP_URL', 'https://api.seb.tj').$this->path,
         ];
     }
 }
