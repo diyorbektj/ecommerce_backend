@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('product_sizes', function (Blueprint $table) {
-            $table->string('sort')->default('1');
+            $table->bigInteger('sort')->default('1');
         });
     }
 

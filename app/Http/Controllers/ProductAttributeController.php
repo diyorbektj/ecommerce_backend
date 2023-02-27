@@ -11,7 +11,7 @@ class ProductAttributeController extends Controller
     {
         return response()->json([
             'colors' => Color::all()->pluck('color_name'),
-            'sizes' => ProductSize::query()->orderByDesc('sort')->get()->pluck('size'),
+            'sizes' => ProductSize::query()->orderBy('sort')->get()->pluck('size'),
         ]);
     }
 }
