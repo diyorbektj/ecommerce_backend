@@ -20,7 +20,7 @@ class BrandController extends Controller
     {
         $data = Brands::all();
 
-        return response()->json($data);
+        return response()->json(BrandResource::collection($data));
     }
 
     /**
@@ -38,7 +38,7 @@ class BrandController extends Controller
         $brands = Brands::query()->create([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
-            'image' => $path
+            'image' => "/storage/".$path
         ]);
 
         return response()->json(new BrandResource($brands), 201);

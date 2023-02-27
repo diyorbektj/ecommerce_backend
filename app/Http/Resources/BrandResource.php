@@ -18,7 +18,7 @@ class BrandResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
-            'image' => env("APP_URL", 'https://seb.tj')."/$this->image"
+            'image' => env("APP_URL", 'https://api.seb.tj').$this->image
         ];
     }
 }
