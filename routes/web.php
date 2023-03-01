@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::any('{any}', function () {
-    return redirect("http://test.ru");
+    return redirect('http://test.ru');
 })->where('any', '.*');

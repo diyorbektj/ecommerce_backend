@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateBrandRequest;
 use App\Http\Resources\BrandResource;
 use App\Models\Brands;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -32,13 +31,13 @@ class BrandController extends Controller
     public function store(CreateBrandRequest $request): \Illuminate\Http\JsonResponse
     {
         $file = $request->file('image');
-        $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+        $fileName = uniqid().'.'.$file->getClientOriginalExtension();
         $path = $file->storeAs('uploads', $fileName, 'public');
 
         $brands = Brands::query()->create([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
-            'image' => "/storage/".$path
+            'image' => '/storage/'.$path,
         ]);
 
         return response()->json(new BrandResource($brands), 201);

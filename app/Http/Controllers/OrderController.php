@@ -8,16 +8,15 @@ use App\Models\Address;
 use App\Models\Basket;
 use App\Models\Order;
 use App\Models\Product;
-use App\Models\ProductOrders;
 use App\Repositories\OrderRepository;
 use App\Services\OrderService;
-use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
     private OrderRepository $orderRepository;
+
     private OrderService $orderService;
 
     public function __construct(OrderRepository $orderRepositorie, OrderService $orderService)
@@ -41,10 +40,10 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param CreateOrderRequest $request
+     * @param  CreateOrderRequest  $request
      * @return JsonResponse
      */
-    public function store(CreateOrderRequest $request): \Illuminate\Http\JsonResponse
+    public function store(CreateOrderRequest $request): JsonResponse
     {
         return response()->json($this->orderService->createOrder($request));
     }
@@ -55,7 +54,7 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id): \Illuminate\Http\JsonResponse
+    public function show($id): JsonResponse
     {
         return response()->json([
             'data' => ProductOrdersResource::collection($this->orderRepository->getOrder($id)),
@@ -121,7 +120,7 @@ class OrderController extends Controller
         return response()->json(['message' => 'Not found']);
     }
 
-    public function myorders(): \Illuminate\Http\JsonResponse
+    public function myorders(): JsonResponse
     {
         $orders = Order::query()->where('user_id', auth('sanctum')->id())->get();
 

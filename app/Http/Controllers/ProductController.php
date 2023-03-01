@@ -116,6 +116,7 @@ class ProductController extends Controller
     public function category($id)
     {
         $data = Product::with('category')->where('category_id', $id)->orderByDesc('created_at')->paginate(16);
+
         return ProductResource::collection($data);
     }
 }

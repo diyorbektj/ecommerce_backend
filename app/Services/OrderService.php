@@ -10,7 +10,6 @@ use App\Models\Address;
 use App\Models\Basket;
 use App\Models\Order;
 use App\Models\ProductOrders;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class OrderService
@@ -29,10 +28,12 @@ class OrderService
             $product_order = ProductOrders::query()->insert($products);
             Basket::query()->where('guid', $request->input('guid'))->delete();
             DB::commit();
+
             return $product_order;
             // all good
         } catch (\Exception $e) {
             DB::rollback();
+
             return $e->getMessage();
         }
     }

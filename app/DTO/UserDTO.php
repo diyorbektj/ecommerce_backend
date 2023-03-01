@@ -13,7 +13,7 @@ class UserDTO
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
-            'avatar_url' => "",
+            'avatar_url' => '',
             'password' => Hash::make($data['password']),
         ];
     }

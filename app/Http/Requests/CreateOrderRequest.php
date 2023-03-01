@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Category;
 use App\Models\Guest;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Ramsey\Uuid\Guid\Guid;
 
 class CreateOrderRequest extends FormRequest
 {
@@ -34,7 +32,7 @@ class CreateOrderRequest extends FormRequest
             'street' => 'required|string|max:255',
             'guid' => [Rule::exists(Guest::class, 'guid')],
             'products' => 'required|array',
-            'total_price' => "required"
+            'total_price' => 'required',
         ];
     }
 }

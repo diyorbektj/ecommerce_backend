@@ -50,7 +50,7 @@ class BasketController extends Controller
                 'product_id' => $product->id,
                 'user_id' => auth('sanctum')->id() ?? null,
                 'product_name' => $product->name,
-                'product_image' => env("APP_URL", "https://api.seb.tj").$product->image->path,
+                'product_image' => env('APP_URL', 'https://api.seb.tj').$product->image->path,
                 'quantity' => $request->quantity,
                 'price' => $product->price,
                 'guid' => $request->guid,

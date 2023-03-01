@@ -9,13 +9,13 @@ class AddressDTO
         return [
             'order_id' => $order_id,
             'fullname' => $data['fullname'],
-            'email' => $data['email'] ?? NULL,
+            'email' => $data['email'] ?? null,
             'phone_number' => $data['phone_number'],
             'country' => 'Tajikistan',
-            'region' => $data['region'] ?? NULL,
+            'region' => $data['region'] ?? null,
             'city' => $data['city'],
             'street' => $data['street'],
-            'postcode' => $data['postcode'] ?? NULL,
+            'postcode' => $data['postcode'] ?? null,
             'guid' => $data['guid'],
             'user_id' => auth('sanctum')->id() ?? 1,
         ];

@@ -31,8 +31,9 @@ Route::controller(ProductController::class)->prefix('product')->group(function (
     Route::get('/', 'index');
     Route::get('/filter', 'filterProduct');
     Route::get('/search', 'SearchProduct');
-    Route::get("/category/{id}", 'category');
-    Route::get('/{id}', 'show');});
+    Route::get('/category/{id}', 'category');
+    Route::get('/{id}', 'show');
+});
 
 Route::controller(OrderController::class)->prefix('order')->group(function () {
     Route::get('/', 'index');
@@ -90,7 +91,7 @@ Route::get('/generate-guid', [\App\Http\Controllers\GuidController::class, 'gene
 
 Route::middleware('auth:sanctum')
     ->prefix('admin')
-    ->group(function (){
+    ->group(function () {
         Route::controller(\App\Http\Controllers\SubCategoryController::class)->prefix('subcategory')->group(function () {
             Route::get('/{id}', 'edit');
             Route::post('/create', 'store');
@@ -111,7 +112,7 @@ Route::middleware('auth:sanctum')
             Route::get('/', 'index');
             Route::get('/{id}', 'show');
             Route::post('/create', 'store');
-            Route::post("/update/{id}", "update");
-            Route::delete("/{id}", "destroy");
+            Route::post('/update/{id}', 'update');
+            Route::delete('/{id}', 'destroy');
         });
-});
+    });
