@@ -25,7 +25,7 @@ class CreateBrandRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'image' => 'required|file'
+            'image' => 'required|file',
         ];
     }
 }

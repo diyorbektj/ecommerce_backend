@@ -25,6 +25,7 @@ class Product extends Model
     {
         return $this->belongsTo(Brands::class, 'brand_id', 'id');
     }
+
     public function images(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(ProductImages::class, 'product_id', 'id');

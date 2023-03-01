@@ -17,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index(): \Illuminate\Http\JsonResponse
     {
-        $data = Category::all();
+        $data = Category::query()->with('subcategory')->get();
 
         return response()->json($data);
     }

@@ -2,12 +2,10 @@
 
 namespace App\DTO;
 
-
 use Carbon\Carbon;
 
 class CreateProductOrderDTO
 {
-
     public static function toArray(array $data, $order_id): array
     {
         return [
