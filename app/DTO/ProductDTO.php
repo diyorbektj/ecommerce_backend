@@ -13,6 +13,7 @@ class ProductDTO
             'quantity' => $data['quantity'],
             'category_id' => $data['category_id'],
             'subcategory_id' => $data['subcategory_id'],
+            'brand_id' => $data['brand_id'],
             'status' => 1,
         ];
     }
