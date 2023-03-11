@@ -29,9 +29,10 @@ class ProductResource extends JsonResource
             'category' => $this->category,
             'subcategory' => $this->subcategory,
             'subcategory_id' => $this->subcategory_id,
+            'brand_id' => $this->brand_id,
             'brand' => $this->brand->name ?? null,
             'colors' => AttributeResource::collection($this->getProductAttribute->where('attribute_id', 2)),
-            'sizes' => AttributeResource::collection($this->getProductAttribute->where('attribute_id', 1)),
+            'sizes' => AttributeResource::collection($this->getProductAttribute->where('attribute_id', 1)->orderBy('value')),
         ];
     }
 }
