@@ -68,8 +68,8 @@ class ProductService
 
     public function updateProduct(UpdateProductRequest $request, $id)
     {
-//        DB::beginTransaction();
-//            try {
+        DB::beginTransaction();
+            try {
         $data = ProductDTO::toArray($request->validated());
         $product = $this->productRepository->updateProduct($id, $data);
         if ($request->hasFile('images')) {
@@ -83,11 +83,11 @@ class ProductService
 //                'value' => $attribute->value,
 //            ]);
 //        }
-
+        DB::commit();
         return $product;
-//        } catch (\Exception $ex) {
-//            DB::rollback();
-//            return response()->json(['error' => $ex->getMessage()], 500);
-//        }
+        } catch (\Exception $ex) {
+            DB::rollback();
+            return response()->json(['error' => $ex->getMessage()], 500);
+        }
     }
 }

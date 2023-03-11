@@ -49,6 +49,6 @@ class Product extends Model
     //get Product Attribute
     public function getProductAttribute()
     {
-        return $this->hasMany(ProductAttributes::class, 'product_id', 'id')->with('attribute');
+        return $this->hasMany(ProductAttributes::class, 'product_id', 'id')->with('attribute')->orderBy('sort');
     }
 }

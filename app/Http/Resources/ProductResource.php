@@ -32,7 +32,7 @@ class ProductResource extends JsonResource
             'brand_id' => $this->brand_id,
             'brand' => $this->brand->name ?? null,
             'colors' => AttributeResource::collection($this->getProductAttribute->where('attribute_id', 2)),
-            'sizes' => AttributeResource::collection($this->getProductAttribute->where('attribute_id', 1)->orderBy('value')),
+            'sizes' => AttributeResource::collection($this->getProductAttribute->where('attribute_id', 1)),
         ];
     }
 }
