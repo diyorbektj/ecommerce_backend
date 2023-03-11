@@ -76,13 +76,13 @@ class ProductService
             $images = (new ProductDTO())->uploadImage($request->file('images'), $product->id);
             $product->images()->insert($images);
         }
-        foreach (json_decode($request->attribute) as $attribute) {
-            ProductAttributes::query()->updateOrCreate([
-                'product_id' => $id,
-                'attribute_id' => $attribute->attribute_id,
-                'value' => $attribute->value,
-            ]);
-        }
+//        foreach (json_decode($request->attribute) as $attribute) {
+//            ProductAttributes::query()->updateOrCreate([
+//                'product_id' => $id,
+//                'attribute_id' => $attribute->attribute_id,
+//                'value' => $attribute->value,
+//            ]);
+//        }
         DB::commit();
         return $product;
         } catch (\Exception $ex) {
