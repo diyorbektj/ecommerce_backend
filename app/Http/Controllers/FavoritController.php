@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\FavoritesResource;
 use App\Models\Favorit;
 use App\Repositories\FavoriteRepository;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class FavoritController extends Controller
@@ -24,6 +25,15 @@ class FavoritController extends Controller
     public function index()
     {
         //
+    }
+
+    public function check(Request $request): JsonResponse
+    {
+        $favorite = Favorit::query()
+            ->where('guid', $request->guid)
+            ->where('product_id', $request->product_id)
+            ->first();
+        return response()->json((bool)$favorite);
     }
 
     /**
@@ -54,6 +64,8 @@ class FavoritController extends Controller
                 'user_id' => auth('sanctum')->id() ?? null,
                 'product_id' => $request->product_id,
             ]);
+        }else{
+            $favorite->delete();
         }
 
         return response()->json($favorite);

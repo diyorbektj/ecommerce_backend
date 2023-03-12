@@ -63,6 +63,7 @@ Route::controller(\App\Http\Controllers\CategoryController::class)->prefix('cate
 Route::controller(\App\Http\Controllers\FavoritController::class)->prefix('favorite')->group(function () {
     Route::get('/create', 'store');
     Route::get('/get', 'show');
+    Route::get('/check', 'check');
     Route::delete('/clean_favorite', 'destroy');
 });
 
