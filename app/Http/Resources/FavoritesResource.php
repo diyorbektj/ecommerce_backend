@@ -15,7 +15,10 @@ class FavoritesResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'product' => new ProductResource($this->product),
+            'id' => $this->id,
+            'product_name' => $this->product->name,
+            'product_image' => env('APP_URL', 'https://api.seb.tj').$this->product->image->path,
+
         ];
     }
 }
